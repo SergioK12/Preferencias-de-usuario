@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:preferencias_de_usuario/shared_preferences/shared_pref.dart';
 import 'package:preferencias_de_usuario/widgets/widgets.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,12 +17,12 @@ class HomeView extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:const [
-            Text("Modo Oscuro: "),
+          children: [
+            Text("Modo Oscuro: ${Preferencias.getIsDarkMode}"),
+            const Divider(),
+            Text("Nombre: ${Preferencias.getName}"),
             Divider(),
-            Text("Nombre: "),
-            Divider(),
-            Text("Genero: "),
+            Text("Genero: ${Preferencias.getGenero}"),
             Divider(),
 
           ],

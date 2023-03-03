@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:preferencias_de_usuario/widgets/widgets.dart';
 
+import '../shared_preferences/shared_pref.dart';
+
 class SettingsView extends StatefulWidget {
   static const String routeName = 'Settings';
   const SettingsView({Key? key}) : super(key: key);
@@ -32,52 +34,43 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
                 const Divider(),
                 SwitchListTile.adaptive(
-                    value: isDarkMode,
+                    value: Preferencias.getIsDarkMode,
                     title: const Text("Modo odcuro"),
-                    
                     onChanged: (value) {
-                     isDarkMode =  value;
-                      setState(() {
-                        
-                      });
+                      Preferencias.setIsdarkmode = value;
+                      setState(() {});
                     }),
                 const Divider(),
                 RadioListTile<int>(
                     value: 1,
-                    groupValue: gender,
+                    groupValue: Preferencias.getGenero,
                     title: const Text("Masculino"),
                     onChanged: (value) {
-                      gender = value ?? 1;
-                      setState(() {
-                        
-                      });
+                      Preferencias.setGenero = value ?? 1;
+                      setState(() {});
                     }),
                 const Divider(),
-
                 RadioListTile<int>(
                     value: 2,
-                    groupValue: gender,
+                    groupValue: Preferencias.getGenero,
                     title: const Text("Femenino"),
                     onChanged: (value) {
-                      gender = value ?? 2;
-                      setState(() {
-                        
-                      });
+                      Preferencias.setGenero = value ?? 2;
+                      setState(() {});
                     }),
                 const Divider(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
-                    initialValue: 'Sergio',
-                    decoration: const InputDecoration(
-                        labelText: 'Nombre', helperText: 'Nombre del usuario'),
-                        onChanged: (value) {
-                          name = value;
-                          setState(() {
-                            
-                          });
-                        }),
-                  ),
+                      initialValue: Preferencias.getName,
+                      decoration: const InputDecoration(
+                          labelText: 'Nombre',
+                          helperText: 'Nombre del usuario'),
+                      onChanged: (value) {
+                        Preferencias.setName = value;
+                        setState(() {});
+                      }),
+                ),
               ],
             ),
           ),
