@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:preferencias_de_usuario/providers/provider.dart';
 import 'package:preferencias_de_usuario/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 import '../shared_preferences/shared_pref.dart';
 
@@ -38,6 +40,11 @@ class _SettingsViewState extends State<SettingsView> {
                     title: const Text("Modo odcuro"),
                     onChanged: (value) {
                       Preferencias.setIsdarkmode = value;
+                      final themeprovider =
+                          Provider.of<ThemeProvider>(context, listen: false);
+                      value
+                          ? themeprovider.setDarkMode()
+                          : themeprovider.setlightMode();
                       setState(() {});
                     }),
                 const Divider(),
