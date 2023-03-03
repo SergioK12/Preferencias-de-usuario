@@ -15,7 +15,13 @@ class HomeView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:const [
-            Text("Home View")
+            Text("Modo Oscuro: "),
+            Divider(),
+            Text("Nombre: "),
+            Divider(),
+            Text("Genero: "),
+            Divider(),
+
           ],
         ),
       ),
